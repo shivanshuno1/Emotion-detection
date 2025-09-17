@@ -1,0 +1,507 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.light-mode {
+  background-color: #f5f7fa;
+  color: #333;
+}
+
+.dark-mode {
+  background-color: #1a1a2e;
+  color: #e6e6e6;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.dark-mode header {
+  border-bottom: 1px solid #444;
+}
+
+h1 {
+  font-size: 28px;
+  color: #4e54c8;
+}
+
+.dark-mode h1 {
+  color: #8f94fb;
+}
+
+.controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.language-selector select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: white;
+}
+
+.dark-mode .language-selector select {
+  background-color: #333;
+  color: white;
+  border: 1px solid #555;
+}
+
+.theme-toggle {
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+  background-color: #4e54c8;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.theme-toggle:hover {
+  background-color: #3a3e9c;
+}
+
+.motivational-quote {
+  text-align: center;
+  font-style: italic;
+  margin: 25px 0;
+  padding: 15px;
+  background: linear-gradient(to right, #8f94fb, #4e54c8);
+  color: white;
+  border-radius: 10px;
+  position: relative;
+  font-size: 18px;
+}
+
+.quote-icon {
+  font-size: 24px;
+  margin: 0 5px;
+}
+
+.input-section {
+  margin-bottom: 25px;
+}
+
+.text-input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  resize: vertical;
+  min-height: 120px;
+  margin-bottom: 15px;
+  transition: border-color 0.3s;
+}
+
+.dark-mode .text-input {
+  background-color: #333;
+  color: white;
+  border: 1px solid #555;
+}
+
+.text-input:focus {
+  outline: none;
+  border-color: #4e54c8;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.button-group button {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button-group button:first-child {
+  background-color: #4e54c8;
+  color: white;
+  flex: 2;
+}
+
+.button-group button:first-child:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.button-group button:first-child:not(:disabled):hover {
+  background-color: #3a3e9c;
+}
+
+.button-group button.secondary {
+  background-color: #e2e2e2;
+  color: #333;
+  flex: 1;
+}
+
+.dark-mode .button-group button.secondary {
+  background-color: #444;
+  color: white;
+}
+
+.button-group button.secondary:hover {
+  background-color: #ccc;
+}
+
+.dark-mode .button-group button.secondary:hover {
+  background-color: #555;
+}
+
+.error-message {
+  background-color: #ffe6e6;
+  color: #d33;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.dark-mode .error-message {
+  background-color: #442222;
+}
+
+.error-icon {
+  margin-right: 10px;
+}
+
+.results {
+  margin-top: 30px;
+}
+
+.results h2 {
+  margin-bottom: 20px;
+  color: #4e54c8;
+}
+
+.dark-mode .results h2 {
+  color: #8f94fb;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.metric {
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .metric {
+  background-color: #2d2d40;
+}
+
+.metric h3 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.dark-mode .metric h3 {
+  color: #aaa;
+}
+
+.metric .value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #4e54c8;
+}
+
+.dark-mode .metric .value {
+  color: #8f94fb;
+}
+
+.sentiment-positive {
+  color: #4caf50 !important;
+}
+
+.sentiment-negative {
+  color: #f44336 !important;
+}
+
+.sentiment-neutral {
+  color: #ff9800 !important;
+}
+
+.emotion-results {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .emotion-results {
+  background-color: #2d2d40;
+}
+
+.emotion-results h3 {
+  margin-bottom: 15px;
+  color: #4e54c8;
+}
+
+.dark-mode .emotion-results h3 {
+  color: #8f94fb;
+}
+
+.dominant {
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #4e54c8;
+}
+
+.dark-mode .dominant {
+  color: #8f94fb;
+}
+
+.emotion-bars {
+  margin-top: 20px;
+}
+
+.emotion-bar {
+  margin-bottom: 15px;
+}
+
+.emotion-label {
+  display: block;
+  margin-bottom: 5px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.bar-container {
+  width: 100%;
+  height: 30px;
+  background-color: #f0f0f0;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.dark-mode .bar-container {
+  background-color: #444;
+}
+
+.bar {
+  height: 100%;
+  border-radius: 15px;
+  transition: width 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+.bar.joy {
+  background: linear-gradient(to right, #ffce54, #ffa647);
+}
+
+.bar.sadness {
+  background: linear-gradient(to right, #5d9cec, #4a89dc);
+}
+
+.bar.anger {
+  background: linear-gradient(to right, #ed5565, #da4453);
+}
+
+.bar.fear {
+  background: linear-gradient(to right, #ac92ec, #967adc);
+}
+
+.bar.surprise {
+  background: linear-gradient(to right, #a0d468, #8cc152);
+}
+
+.bar.love {
+  background: linear-gradient(to right, #ec87c0, #d770ad);
+}
+
+.bar.neutral {
+  background: linear-gradient(to right, #e6e9ed, #ccd1d9);
+}
+
+.additional-aspects {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .additional-aspects {
+  background-color: #2d2d40;
+}
+
+.additional-aspects h3 {
+  margin-bottom: 20px;
+  color: #4e54c8;
+}
+
+.dark-mode .additional-aspects h3 {
+  color: #8f94fb;
+}
+
+.aspects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.aspect {
+  text-align: center;
+}
+
+.aspect h4 {
+  margin-bottom: 10px;
+  color: #666;
+}
+
+.dark-mode .aspect h4 {
+  color: #aaa;
+}
+
+.aspect-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.dark-mode .aspect-bar {
+  background-color: #444;
+}
+
+.aspect-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease-in-out;
+}
+
+.aspect-fill.stress {
+  background: linear-gradient(to right, #ffce54, #ffa647);
+}
+
+.aspect-fill.confidence {
+  background: linear-gradient(to right, #a0d468, #8cc152);
+}
+
+.aspect-fill.energy {
+  background: linear-gradient(to right, #4fc1e9, #3bafda);
+}
+
+.aspect-fill.social {
+  background: linear-gradient(to right, #ec87c0, #d770ad);
+}
+
+.advice-section {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .advice-section {
+  background-color: #2d2d40;
+}
+
+.advice-section h3 {
+  margin-bottom: 15px;
+  color: #4e54c8;
+}
+
+.dark-mode .advice-section h3 {
+  color: #8f94fb;
+}
+
+.advice-section p {
+  line-height: 1.6;
+  font-style: italic;
+}
+
+footer {
+  margin-top: 40px;
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  color: #666;
+}
+
+.dark-mode footer {
+  border-top: 1px solid #444;
+  color: #aaa;
+}
+
+.api-status {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+  
+  .aspects-grid {
+    grid-template-columns: 1fr;
+  }
+}
